@@ -1,5 +1,5 @@
-import { device } from "components/screenSizeHelper";
 import styled from "styled-components";
+import { device } from "components/screenSizeHelper";
 
 export const StRocketInfoContainer = styled.section`
   width: clamp(380px, 100%, 700px);

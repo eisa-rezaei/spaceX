@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import background from "assets/Background.png";
+import background from "assets/Background.webp";
 import { device } from "components/screenSizeHelper";
 
 export const StRocketPageContainer = styled.article`

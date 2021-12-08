@@ -4,13 +4,13 @@ import RocketFooter from "./components/Footer";
 import RocketInfo from "./components/RocketInfo";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
+import Loading from "components/Loading";
 import {
   StRocketNextBeforeRocket,
   StRocketPageBtns,
   StRocketPageContainer,
   StRocketSearch,
 } from "./style";
-import Loading from "components/Loading";
 
 const RocketPage = () => {
   const [isUpComing, setIsUpComing] = useState(true);
