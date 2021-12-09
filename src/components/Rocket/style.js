@@ -5,30 +5,52 @@ import { device } from "components/screenSizeHelper";
 export const StRocketPageContainer = styled.article`
   width: 100%;
   min-height: 100vh;
-  padding-top: 15px;
   color: #fff;
   display: flex;
   position: relative;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  background-color: #26285c;
-  background-image: url(${background});
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url(${background});
   background-position: center;
-  background-size: fill;
+  background-size: cover;
+
   @media ${device.tablet} {
-    padding-top: 20px;
+    border-bottom: 10px solid #1a1c45;
   }
-  @media ${device.laptop} {
-    padding-top: 35px;
+`;
+
+export const StRocketPageTitleBox = styled.div`
+  width: 620px;
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  & h1 {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+  }
+  @media ${device.tablet} {
+    & h1 {
+      font-size: 2rem;
+    }
   }
 `;
 
 export const StRocketPageBtns = styled.div`
-  margin-bottom: 10px;
+  width: 100%;
+  min-height: 65px;
+  text-align: center;
+  margin: 15px 0;
   & button {
-    width: 80px;
-    padding: 5px 0;
+    width: 100px;
+    padding: 15px 0;
     color: #fff;
     cursor: pointer;
     font-size: 0.6rem;
@@ -39,8 +61,8 @@ export const StRocketPageBtns = styled.div`
     border-radius: ${(props) =>
       props.isUpComing === 1 ? "0 6px 6px 0" : "6px 0 0 6px"};
     :nth-child(${(props) => props.isUpComing}) {
-      width: 100px;
-      padding: 10px 0;
+      width: 120px;
+      padding: 25px 0;
       color: #222;
       background: #ffffff;
       border: none;
@@ -50,13 +72,8 @@ export const StRocketPageBtns = styled.div`
   }
   @media ${device.tablet} {
     height: 45px;
-    margin: 15px 0;
     & button {
       font-size: 0.7rem;
-      padding: 10px 0;
-      :nth-child(${(props) => props.isUpComing}) {
-        padding: 15px 0;
-      }
     }
   }
 `;
@@ -66,6 +83,7 @@ export const StRocketSearch = styled.div`
   height: 40px;
   padding: 10px;
   margin: 15px auto;
+  transition: all 0.2s linear;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,6 +101,13 @@ export const StRocketSearch = styled.div`
     font-size: 0.7rem;
     background-color: inherit;
   }
+  :hover {
+    box-shadow: 5px 10px 15px #1a1c4880;
+    border: 1.5px solid #3a3c68;
+    & svg {
+      color: #3a3c68;
+    }
+  }
 `;
 
 export const StRocketNextBeforeRocket = styled.div`
@@ -98,12 +123,13 @@ export const StRocketNextBeforeRocket = styled.div`
   font-size: 2rem;
   cursor: pointer;
   color: #000;
+  display: flex;
   align-items: center;
   justify-content: ${(props) => (props.left ? "right" : "left")};
   background-color: rgba(255, 255, 255, 0.08);
-  display: none;
-
-  @media ${device.tablet} {
-    display: flex;
+  transition: all 0.2s linear;
+  :hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
   }
 `;

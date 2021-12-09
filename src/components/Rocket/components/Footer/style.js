@@ -7,29 +7,30 @@ const selectedSite = css`
     color: #ff6a6a;
   }
   & p {
-    color: #ffffffa0;
+    color: #ffffffaa;
   }
   :after {
     content: "";
     width: 70%;
-    height: 2px;
+    height: 4px;
     border-radius: 5px;
     background-color: #fff;
     position: absolute;
-    bottom: 0;
+    bottom: -7px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 3;
   }
 `;
 
 export const StRocketFooterContainer = styled.footer`
   width: clamp(375px, 100%, 700px);
+  min-height: 80px;
   bottom: 0;
   left: clamp(0, 0, 50%);
-  z-index: 2;
+  z-index: 5;
   display: flex;
   background: #1a1c48;
-  position: absolute;
   align-items: center;
   justify-content: space-around;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
@@ -41,12 +42,13 @@ export const StRocketFooterContainer = styled.footer`
 
 export const StRocketFooterLink = styled.footer`
   width: 120px;
-  min-height: 60px;
+  min-height: 70px;
   display: flex;
   cursor: pointer;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 2px;
+  justify-content: space-between;
+  border-radius: 10px;
 
   & p {
     font-size: 0.5rem;

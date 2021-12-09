@@ -1,3 +1,4 @@
+import { device } from "components/screenSizeHelper";
 import styled from "styled-components";
 
 export const StTicketContainer = styled.div`
@@ -15,6 +16,13 @@ export const StTicketContainer = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  @media ${device.tablet} {
+    img {
+      width: 80%;
+      height: 80%;
+      object-fit: cover;
+    }
   }
 `;
 

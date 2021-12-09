@@ -24,7 +24,7 @@ body{
     user-select: none;
     line-height: 1;
     background-color: #14152c;
-    font-family: "Changa", sans-serif;
+    font-family: 'Murecho', sans-serif;
 
 }
 li{

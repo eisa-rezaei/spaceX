@@ -9,6 +9,7 @@ import {
   StRocketNextBeforeRocket,
   StRocketPageBtns,
   StRocketPageContainer,
+  StRocketPageTitleBox,
   StRocketSearch,
 } from "./style";
 
@@ -17,7 +18,7 @@ const RocketPage = () => {
   const [currentSite, setCurrentSite] = useState("KSC LC 39A");
   const [currentShipIndex, setCurrentShipIndex] = useState(0);
 
-  const [siteList, setSiteList] = useState([]);
+  const [siteList, setSiteList] = useState({});
 
   const { isLoading, data } = useQuery(
     isUpComing ? "RocketUpData" : "RocketPastData",
@@ -36,8 +37,17 @@ const RocketPage = () => {
   );
 
   useEffect(() => {
-    const sites = data?.map((i) => i.launch_site.site_name);
-    setSiteList([...new Set(sites)]);
+    const sitesList = data?.reduce((total, curr) => {
+      if (total[curr.launch_site.site_name] >= 0) {
+        total[curr.launch_site.site_name] =
+          total[curr.launch_site.site_name] + 1;
+      } else {
+        total[curr.launch_site.site_name] = 1;
+      }
+      return total;
+    }, {});
+
+    setSiteList(sitesList);
   }, [data]);
 
   const starShipChanger = (query) => {
@@ -61,15 +71,17 @@ const RocketPage = () => {
   }
   return (
     <StRocketPageContainer>
-      <h3>SPACEX LUNCH OVERVIEW</h3>
-      <StRocketSearch>
-        <input placeholder="SEARCH BETWEEN LUNCHES ... " />
-        <BiSearch />
-      </StRocketSearch>
-      <StRocketPageBtns isUpComing={isUpComing ? 1 : 2}>
-        <button onClick={() => setIsUpComing(true)}>UPCOMING</button>
-        <button onClick={() => setIsUpComing(false)}>PAST</button>
-      </StRocketPageBtns>
+      <StRocketPageTitleBox>
+        <h1>SPACEX LUNCH OVERVIEW</h1>
+        <StRocketSearch>
+          <input placeholder="SEARCH BETWEEN LUNCHES ... " />
+          <BiSearch />
+        </StRocketSearch>
+        <StRocketPageBtns isUpComing={isUpComing ? 1 : 2}>
+          <button onClick={() => setIsUpComing(true)}>UPCOMING</button>
+          <button onClick={() => setIsUpComing(false)}>PAST</button>
+        </StRocketPageBtns>
+      </StRocketPageTitleBox>
       <RocketInfo
         data={
           data.filter((i) => i.launch_site.site_name === currentSite)[
