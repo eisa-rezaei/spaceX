@@ -14,8 +14,7 @@ import {
 } from "./style";
 
 const RocketPage = () => {
-  const [isUpComing, setIsUpComing] = useState(true);
-  const [currentSite, setCurrentSite] = useState("KSC LC 39A");
+  const [isUpComing, setIsUpComing] = useState(false);
   const [currentShipIndex, setCurrentShipIndex] = useState(0);
 
   const [siteList, setSiteList] = useState({});
@@ -35,8 +34,23 @@ const RocketPage = () => {
       staleTime: 30000,
     }
   );
+  const [currentSite, setCurrentSite] = useState(
+    data && data[0].launch_site.site_name
+  );
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
+    const filterData =
+      data && data.filter((i) => i.launch_site.site_name === currentSite);
+    setFilteredData(filterData);
+  }, [data, currentSite]);
+
+  useEffect(() => {
+    setCurrentShipIndex(0);
+  }, [currentSite]);
+
+  useEffect(() => {
+    setCurrentSite(data && data[0].launch_site.site_name);
     const sitesList = data?.reduce((total, curr) => {
       if (total[curr.launch_site.site_name] >= 0) {
         total[curr.launch_site.site_name] =
@@ -51,19 +65,18 @@ const RocketPage = () => {
   }, [data]);
 
   const starShipChanger = (query) => {
-    let SiteLunchList = data.filter(
-      (i) => i.launch_site.site_name === currentSite
-    );
     if (query === "next") {
       setCurrentShipIndex(
-        currentShipIndex < SiteLunchList.length - 1 ? currentShipIndex + 1 : 0
+        currentShipIndex < filteredData.length - 1
+          ? currentShipIndex + 1
+          : currentShipIndex
       );
     } else {
       setCurrentShipIndex(
-        currentShipIndex === 0 ? SiteLunchList.length - 1 : currentShipIndex - 1
+        currentShipIndex === 0 ? filteredData : currentShipIndex - 1
       );
     }
-    setCurrentSite(SiteLunchList[currentShipIndex]?.launch_site.site_name);
+    setCurrentSite(filteredData[currentShipIndex]?.launch_site.site_name);
   };
 
   if (isLoading) {
@@ -78,26 +91,44 @@ const RocketPage = () => {
           <BiSearch />
         </StRocketSearch>
         <StRocketPageBtns isUpComing={isUpComing ? 1 : 2}>
-          <button onClick={() => setIsUpComing(true)}>UPCOMING</button>
-          <button onClick={() => setIsUpComing(false)}>PAST</button>
+          <button
+            onClick={() => {
+              if (!isUpComing) setCurrentSite(0);
+              setIsUpComing(true);
+            }}
+          >
+            UPCOMING
+          </button>
+          <button
+            onClick={() => {
+              if (isUpComing) setCurrentSite(0);
+              setIsUpComing(false);
+            }}
+          >
+            PAST
+          </button>
         </StRocketPageBtns>
       </StRocketPageTitleBox>
-      <RocketInfo
-        data={
-          data.filter((i) => i.launch_site.site_name === currentSite)[
-            currentShipIndex
-          ]
-        }
-      />
+      <RocketInfo data={filteredData && filteredData[currentShipIndex]} />
       <RocketFooter
         RocketData={siteList}
         currentSite={currentSite}
         setCurrentSite={setCurrentSite}
       />
-      <StRocketNextBeforeRocket onClick={() => starShipChanger("next")}>
+      <StRocketNextBeforeRocket
+        onClick={() => starShipChanger("next")}
+        shouldShow={
+          filteredData?.length > 0 &&
+          filteredData?.length - 1 !== currentShipIndex
+        }
+      >
         <AiOutlineRight />
       </StRocketNextBeforeRocket>
-      <StRocketNextBeforeRocket left onClick={() => starShipChanger()}>
+      <StRocketNextBeforeRocket
+        left
+        onClick={() => starShipChanger()}
+        shouldShow={filteredData?.length > 0 && currentShipIndex !== 0}
+      >
         <AiOutlineLeft />
       </StRocketNextBeforeRocket>
     </StRocketPageContainer>

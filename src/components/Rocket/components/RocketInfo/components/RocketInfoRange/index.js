@@ -17,15 +17,15 @@ const RocketInfoRange = ({ rangeValue, title, maxValue }) => {
           <AnimatedNumbers
             includeComma
             animateToNumber={
-              rangeValue > 10 ? rangeValue.toFixed(0) : rangeValue
+              rangeValue > 10 ? rangeValue.toFixed(0) : rangeValue.toFixed(5)
             }
-            fontStyle={{ fontSize: 6 }}
+            fontStyle={{ fontSize: 12 }}
             configs={[
-              { mass: 1, tension: 210, friction: 30 },
-              { mass: 1, tension: 180, friction: 30 },
-              { mass: 1, tension: 160, friction: 30 },
-              { mass: 1, tension: 140, friction: 30 },
-              { mass: 1, tension: 120, friction: 30 },
+              { mass: 1, tension: 300, friction: 40 },
+              { mass: 1, tension: 280, friction: 60 },
+              { mass: 1, tension: 260, friction: 80 },
+              { mass: 1, tension: 280, friction: 60 },
+              { mass: 1, tension: 300, friction: 40 },
             ]}
           />
           {rangeValue > 10 ? <p>&nbsp;km</p> : null}

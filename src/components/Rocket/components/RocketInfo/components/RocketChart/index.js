@@ -73,7 +73,7 @@ const RocketChart = ({
           offsetCenter: [0, "15%"],
           fontSize: 25,
           fontWeight: "normal",
-          fontFamily: "Murecho",
+          fontFamily: "Lato",
           formatter: "{value}",
           color: "auto",
         },

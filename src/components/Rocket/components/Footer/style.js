@@ -56,7 +56,7 @@ export const StRocketFooterLink = styled.footer`
   }
   & h6 {
     font-size: 0.65rem;
-    font-weight: 100;
+    font-weight: 500;
   }
   & svg {
     font-size: 1.4rem;

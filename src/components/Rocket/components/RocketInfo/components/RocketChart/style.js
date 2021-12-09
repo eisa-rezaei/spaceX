@@ -6,15 +6,15 @@ export const StRocketInfoRocketChartsItem = styled.div`
   height: 130px;
   padding-top: 10px;
   position: relative;
-  font-size: 10px;
-  font-weight: 100;
+  font-size: 6px;
+  font-weight: 400;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.02);
   display: flex;
   align-items: center;
   justify-content: center;
   span {
-    width: 80px;
+    width: 100px;
     text-align: center;
     :first-child {
       top: 35%;

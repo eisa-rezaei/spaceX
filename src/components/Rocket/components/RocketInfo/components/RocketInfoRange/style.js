@@ -35,13 +35,13 @@ export const StRocketInfoRange = styled.div`
   border-radius: 10px;
   ::before {
     content: "";
-    transition: all 0.3s ease;
     min-width: ${(props) =>
       props ? `${(props.value * 100) / props.max}%` : "0%"};
-    min-height: 5px;
-    background-color: #298bfe;
-    position: absolute;
     left: 0;
+    min-height: 6px;
+    position: absolute;
     border-radius: 10px;
+    transition: all 0.3s ease;
+    background-color: #298bfe;
   }
 `;

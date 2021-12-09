@@ -128,8 +128,13 @@ export const StRocketNextBeforeRocket = styled.div`
   justify-content: ${(props) => (props.left ? "right" : "left")};
   background-color: rgba(255, 255, 255, 0.08);
   transition: all 0.2s linear;
+  display: ${(props) => (props.shouldShow ? "flex" : "none")};
   :hover {
     color: #fff;
     background-color: rgba(255, 255, 255, 0.2);
+    ${(props) =>
+      props.left
+        ? "left: 0;transform: translate(-55%, -50%);padding-right:20px;"
+        : "right: 0;transform: translate(55%, -50%);padding-left:20px;"}
   }
 `;
