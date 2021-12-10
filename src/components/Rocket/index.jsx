@@ -11,13 +11,15 @@ import {
   StRocketPageContainer,
   StRocketPageTitleBox,
   StRocketSearch,
+  StRocketSearchResults,
+  StRocketSearchResultsItem,
 } from "./style";
 
 const RocketPage = () => {
   const [isUpComing, setIsUpComing] = useState(false);
   const [currentShipIndex, setCurrentShipIndex] = useState(0);
-
   const [siteList, setSiteList] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
 
   const { isLoading, data } = useQuery(
     isUpComing ? "RocketUpData" : "RocketPastData",
@@ -42,7 +44,7 @@ const RocketPage = () => {
   useEffect(() => {
     const filterData =
       data && data.filter((i) => i.launch_site.site_name === currentSite);
-    setFilteredData(filterData);
+    setFilteredData(filterData?.reverse());
   }, [data, currentSite]);
 
   useEffect(() => {
@@ -63,7 +65,6 @@ const RocketPage = () => {
 
     setSiteList(sitesList);
   }, [data]);
-
   const starShipChanger = (query) => {
     if (query === "next") {
       setCurrentShipIndex(
@@ -78,17 +79,39 @@ const RocketPage = () => {
     }
     setCurrentSite(filteredData[currentShipIndex]?.launch_site.site_name);
   };
-
   if (isLoading) {
     return <Loading />;
   }
   return (
-    <StRocketPageContainer>
+    <StRocketPageContainer onClick={() => setSearchTerm("")}>
       <StRocketPageTitleBox>
         <h1>SPACEX LUNCH OVERVIEW</h1>
         <StRocketSearch>
-          <input placeholder="SEARCH BETWEEN LUNCHES ... " />
+          <input
+            placeholder="SEARCH BETWEEN LUNCHES ... "
+            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchTerm}
+          />
           <BiSearch />
+          <StRocketSearchResults shouldShow={!!searchTerm}>
+            {siteList &&
+              Object.keys(siteList)
+                ?.filter((siteName) =>
+                  siteName.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((item, index) => (
+                  <StRocketSearchResultsItem
+                    key={index}
+                    onClick={() => {
+                      setSearchTerm("");
+                      setCurrentSite(item);
+                    }}
+                  >
+                    {item}
+                    <p>x{Object.values(siteList)[index]}&nbsp;lunches</p>
+                  </StRocketSearchResultsItem>
+                ))}
+          </StRocketSearchResults>
         </StRocketSearch>
         <StRocketPageBtns isUpComing={isUpComing ? 1 : 2}>
           <button

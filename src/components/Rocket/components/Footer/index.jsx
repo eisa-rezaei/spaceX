@@ -1,8 +1,8 @@
-import React from "react";
+import React, { memo } from "react";
 import { CgSmartphoneChip } from "react-icons/cg";
 import { StRocketFooterContainer, StRocketFooterLink } from "./style";
 
-const RocketFooter = ({ RocketData, currentSite, setCurrentSite }) => {
+const RocketFooter = memo(({ RocketData, currentSite, setCurrentSite }) => {
   return (
     <StRocketFooterContainer>
       {RocketData &&
@@ -19,6 +19,6 @@ const RocketFooter = ({ RocketData, currentSite, setCurrentSite }) => {
         ))}
     </StRocketFooterContainer>
   );
-};
+});
 
 export default RocketFooter;

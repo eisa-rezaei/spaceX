@@ -25,7 +25,7 @@ const RocketChart = ({
         },
         progress: {
           show: true,
-          width: 5,
+          width: 4,
         },
         pointer: {
           show: false,
@@ -73,13 +73,13 @@ const RocketChart = ({
           offsetCenter: [0, "15%"],
           fontSize: 25,
           fontWeight: "normal",
-          fontFamily: "Lato",
+          fontFamily: "lato",
           formatter: "{value}",
-          color: "auto",
+          color: "inherit",
         },
         data: [
           {
-            value: chartData || 10,
+            value: chartData || 0,
           },
         ],
       },
@@ -92,6 +92,7 @@ const RocketChart = ({
         option={option}
         echarts={echarts}
         style={{ width: "100%", height: "150px" }}
+        lazyUpdate={true}
       />
       <span>{chartParameter}</span>
     </StRocketInfoRocketChartsItem>

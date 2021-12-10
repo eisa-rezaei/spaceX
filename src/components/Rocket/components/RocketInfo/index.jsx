@@ -1,7 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import rocketImg from "assets/Falcon91.svg";
 import { BsFillCircleFill } from "react-icons/bs";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+
+import RocketInfoRange from "./components/RocketInfoRange";
+import RocketChart from "./components/RocketChart";
 
 import {
   StRocketInfoContainer,
@@ -13,11 +16,8 @@ import {
   StRocketInfoRocketLunchInfoChPart,
   StRocketInfoRocketLunchInfoDPart,
 } from "./style";
-// import RocketCharts from "./RocketCharts";
-import RocketInfoRange from "./components/RocketInfoRange";
-import RocketChart from "./components/RocketChart";
 
-const RocketInfo = ({ data }) => {
+const RocketInfo = memo(({ data }) => {
   const rocketData = data?.rocket.second_stage.payloads[0];
   const landingData = data?.rocket.first_stage.cores[0];
   const orbitParams = rocketData?.orbit_params;
@@ -171,6 +171,6 @@ const RocketInfo = ({ data }) => {
       </StRocketInfoRocketID>
     </StRocketInfoContainer>
   );
-};
+});
 
 export default RocketInfo;

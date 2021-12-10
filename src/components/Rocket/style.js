@@ -34,7 +34,7 @@ export const StRocketPageTitleBox = styled.div`
   justify-content: flex-start;
   & h1 {
     font-size: 1.3rem;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
   @media ${device.tablet} {
     & h1 {
@@ -45,24 +45,24 @@ export const StRocketPageTitleBox = styled.div`
 
 export const StRocketPageBtns = styled.div`
   width: 100%;
-  min-height: 65px;
+  min-height: 70px;
   text-align: center;
   margin: 15px 0;
   & button {
-    width: 110px;
-    padding: 15px 0;
+    width: 120px;
+    height: 50px;
     color: #fff;
     cursor: pointer;
     font-size: 0.6rem;
     border: 1px solid #fff;
-    transition: all 0.1s linear;
+    transition: all 0.15s linear;
     ${(props) =>
       props.isUpComing === 1 ? "border-left:none;" : "border-right:none;"}
     border-radius: ${(props) =>
       props.isUpComing === 1 ? "0 6px 6px 0" : "6px 0 0 6px"};
     :nth-child(${(props) => props.isUpComing}) {
       width: 130px;
-      padding: 25px 0;
+      height: 70px;
       color: #222;
       background: #ffffff;
       border: none;
@@ -71,7 +71,6 @@ export const StRocketPageBtns = styled.div`
     }
   }
   @media ${device.tablet} {
-    height: 45px;
     & button {
       font-size: 16px;
     }
@@ -83,15 +82,16 @@ export const StRocketSearch = styled.div`
   height: 40px;
   padding: 10px;
   margin: 15px auto;
-  transition: all 0.2s linear;
+  position: relative;
+  border-radius: 12px;
   display: flex;
   align-items: center;
+  transition: all 0.2s linear;
   justify-content: space-between;
   background: rgba(26, 28, 72, 0.01);
   border: 1.5px solid rgba(148, 153, 195, 0.5);
   box-shadow: 0px 2px 56px rgba(0, 0, 0, 0.15),
     inset 0px 0px 50px rgba(0, 0, 0, 0.2);
-  border-radius: 12px;
   & svg {
     color: rgba(255, 255, 255, 0.38);
   }
@@ -102,11 +102,50 @@ export const StRocketSearch = styled.div`
     background-color: inherit;
   }
   :hover {
-    box-shadow: 5px 10px 15px #1a1c4880;
-    border: 1.5px solid #3a3c68;
+    cursor: pointer;
+    box-shadow: 0px 5px 10px #ffffff40;
+    border: 1.5px solid #fff;
     & svg {
-      color: #3a3c68;
+      color: #fff;
     }
+    & input {
+      ::placeholder {
+        color: #fff;
+      }
+    }
+  }
+`;
+
+export const StRocketSearchResults = styled.ul`
+  width: 100%;
+  min-height: ${(props) => (props.shouldShow ? "auto" : "0")};
+  visibility: ${(props) => (props.shouldShow ? "visible" : "hidden")};
+  left: 0;
+  top: 38px;
+  z-index: 2;
+  position: absolute;
+  overflow: hidden;
+  background-color: #0f1022;
+  border-radius: 0 0 10px 10px;
+  transition: height 1s linear;
+  border: 1px solid rgba(148, 153, 195, 0.5);
+  border-top: 1px solid #1a1c48fa;
+`;
+export const StRocketSearchResultsItem = styled.li`
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid #1a1c48fa;
+  border-bottom: none;
+
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  :hover {
+    background-color: #3a3c68;
+    border-left: 1.5px solid #fff;
+    border-right: 1.5px solid #fff;
   }
 `;
 
