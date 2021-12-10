@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App";
-
+import * as serviceWorkerRegistration from "serviceWorkerRegistration";
 const queryClient = new QueryClient();
 
 ReactDOM.render(
@@ -15,3 +15,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+serviceWorkerRegistration.register();
