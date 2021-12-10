@@ -14,7 +14,7 @@ export const StRocketInfoRocketImg = styled.div`
   position: relative;
   & img {
     width: 250px;
-    height: 350px;
+    height: 380px;
     z-index: 2;
     position: relative;
   }

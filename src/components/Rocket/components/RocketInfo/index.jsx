@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import rocketImg from "assets/Falcon91.svg";
+import rocketImg from "assets/falcon.webp";
 import { BsFillCircleFill } from "react-icons/bs";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
