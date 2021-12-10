@@ -49,7 +49,7 @@ export const StRocketPageBtns = styled.div`
   text-align: center;
   margin: 15px 0;
   & button {
-    width: 100px;
+    width: 110px;
     padding: 15px 0;
     color: #fff;
     cursor: pointer;
@@ -61,7 +61,7 @@ export const StRocketPageBtns = styled.div`
     border-radius: ${(props) =>
       props.isUpComing === 1 ? "0 6px 6px 0" : "6px 0 0 6px"};
     :nth-child(${(props) => props.isUpComing}) {
-      width: 120px;
+      width: 130px;
       padding: 25px 0;
       color: #222;
       background: #ffffff;
@@ -73,7 +73,7 @@ export const StRocketPageBtns = styled.div`
   @media ${device.tablet} {
     height: 45px;
     & button {
-      font-size: 0.7rem;
+      font-size: 16px;
     }
   }
 `;
