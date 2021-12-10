@@ -146,6 +146,10 @@ export const StRocketInfoRocketLunchInfoDPart = styled.div`
     }
     & p {
       text-transform: ${(props) => (props.right ? "uppercase" : "capitalize")};
+      :last-child {
+        width: 80px;
+        text-align: left;
+      }
     }
   }
   @media ${device.tablet} {

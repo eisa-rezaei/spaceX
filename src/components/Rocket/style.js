@@ -18,7 +18,7 @@ export const StRocketPageContainer = styled.article`
     ),
     url(${background});
   background-position: center;
-  background-size: cover;
+  background-size: fill;
 
   @media ${device.tablet} {
     border-bottom: 10px solid #1a1c45;
@@ -50,11 +50,11 @@ export const StRocketPageBtns = styled.div`
   margin: 15px 0;
   & button {
     width: 120px;
-    height: 50px;
+    height: 55px;
     color: #fff;
     cursor: pointer;
     font-size: 0.6rem;
-    border: 1px solid #fff;
+    border: 1.5px solid rgba(148, 153, 195, 0.5);
     transition: all 0.15s linear;
     ${(props) =>
       props.isUpComing === 1 ? "border-left:none;" : "border-right:none;"}
@@ -104,13 +104,13 @@ export const StRocketSearch = styled.div`
   :hover {
     cursor: pointer;
     box-shadow: 0px 5px 10px #ffffff40;
-    border: 1.5px solid #fff;
+    border: 1.5px solid #ffffffa0;
     & svg {
-      color: #fff;
+      color: #ffffffa0;
     }
     & input {
       ::placeholder {
-        color: #fff;
+        color: #ffffffa0;
       }
     }
   }

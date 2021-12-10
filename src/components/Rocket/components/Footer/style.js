@@ -7,7 +7,7 @@ const selectedSite = css`
     color: #ff6a6a;
   }
   & p {
-    color: #ffffffaa;
+    color: #ffffff;
   }
   :after {
     content: "";
@@ -52,7 +52,7 @@ export const StRocketFooterLink = styled.footer`
 
   & p {
     font-size: 0.5rem;
-    color: #ffffff50;
+    color: #ffffff80;
   }
   & h6 {
     font-size: 0.65rem;
