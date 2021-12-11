@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 
@@ -49,6 +49,8 @@ const RocketPage = () => {
     siteNameParamReplaced || (data && data[0].launch_site.site_name)
   );
   const [filteredData, setFilteredData] = useState([]);
+
+  const navigate = useNavigate();
 
   //-----states
 
@@ -99,6 +101,7 @@ const RocketPage = () => {
   };
 
   const isUpComingChangeHandler = (boolean) => () => {
+    navigate("/");
     if (boolean) {
       if (!isUpComing) setCurrentShipIndex(0);
       setIsUpComing(true);
@@ -148,11 +151,7 @@ const RocketPage = () => {
         </StRocketPageBtns>
       </StRocketPageTitleBox>
       <RocketInfo data={filteredData && filteredData[currentShipIndex]} />
-      <RocketFooter
-        RocketData={siteList}
-        currentSite={currentSite}
-        setCurrentSite={setCurrentSite}
-      />
+      <RocketFooter RocketData={siteList} currentSite={currentSite} />
       <StRocketNextBeforeRocket
         onClick={() => currentLunchChangeHandler("next")}
         shouldShow={
