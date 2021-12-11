@@ -19,9 +19,13 @@ export const StRocketPageContainer = styled.article`
     url(${background});
   background-position: center;
   background-size: fill;
+  background-repeat: no-repeat;
 
   @media ${device.tablet} {
     border-bottom: 10px solid #1a1c45;
+  }
+  @media ${device.desktopL} {
+    background-size: cover;
   }
 `;
 
