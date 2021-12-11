@@ -1,6 +1,6 @@
 import React from "react";
 import bgGif from "assets/bgGif.gif";
-import ticket from "assets/ticket.png";
+import ticket from "assets/ticket.webp";
 import { StTicketContainer, StTicketFooter, StTicketGetTicket } from "./style";
 
 const Ticket = () => {
