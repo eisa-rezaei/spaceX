@@ -3,6 +3,7 @@ import background from "assets/Background.webp";
 import { device } from "components/screenSizes";
 
 export const StRocketPageContainer = styled.article`
+  width: 100%;
   min-height: 100vh;
   color: #fff;
   display: flex;
