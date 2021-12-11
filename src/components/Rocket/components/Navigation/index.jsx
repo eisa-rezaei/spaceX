@@ -7,11 +7,8 @@ const Navigation = memo(({ RocketData, currentSite }) => {
   return (
     <StRocketFooterContainer>
       {RocketData &&
-        Object.keys(RocketData)?.map((item, index) => (
-          <NavLink
-            key={item}
-            to={`/${item.replaceAll(" ", "_").toLowerCase()}`}
-          >
+        Object.keys(RocketData).map((item, index) => (
+          <NavLink key={item} to={`/${item.replaceAll(" ", "_")}`}>
             <StRocketFooterLink
               isSite={item.toLowerCase() === currentSite.toLowerCase()}
             >

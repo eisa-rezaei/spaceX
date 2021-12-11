@@ -114,7 +114,7 @@ export const StRocketInfoRocketChartsItem = styled.div`
 `;
 
 export const StRocketInfoRocketLunchInfo = styled.div`
-  width: 150px;
+  width: 160px;
   min-height: 220px;
   color: #fff;
   z-index: 2;
@@ -132,7 +132,7 @@ export const StRocketInfoRocketLunchInfoDPart = styled.div`
   & span {
     width: 100%;
     margin: 5px 0;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     display: flex;
     align-items: center;
     justify-content: ${(props) => (props.right ? "right" : "space-between")};

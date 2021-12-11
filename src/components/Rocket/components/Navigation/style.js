@@ -24,7 +24,7 @@ const selectedSite = css`
 `;
 
 export const StRocketFooterContainer = styled.ul`
-  width: clamp(375px, 100%, 700px);
+  width: 100%;
   min-height: 80px;
   bottom: 0;
   left: clamp(0, 0, 50%);
@@ -35,13 +35,14 @@ export const StRocketFooterContainer = styled.ul`
   justify-content: space-around;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
   @media ${device.tablet} {
+    width: 700px;
     padding: 0 80px;
     clip-path: polygon(10% 0, 90% 0%, 100% 100%, 0% 100%);
   }
 `;
 
 export const StRocketFooterLink = styled.li`
-  width: 120px;
+  max-width: 120px;
   min-height: 70px;
   display: flex;
   cursor: pointer;
