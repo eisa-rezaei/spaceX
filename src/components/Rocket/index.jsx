@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import RocketFooter from "./components/Footer";
-import RocketInfo from "./components/RocketInfo";
+import { useParams } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
+
+import RocketFooter from "./components/Footer";
+import RocketInfo from "./components/RocketInfo";
 import Loading from "components/Loading";
+
 import {
   StRocketNextBeforeRocket,
   StRocketPageBtns,
@@ -16,11 +19,8 @@ import {
 } from "./style";
 
 const RocketPage = () => {
+  //-----states
   const [isUpComing, setIsUpComing] = useState(false);
-  const [currentShipIndex, setCurrentShipIndex] = useState(0);
-  const [siteList, setSiteList] = useState({});
-  const [searchTerm, setSearchTerm] = useState("");
-
   const { isLoading, data } = useQuery(
     isUpComing ? "RocketUpData" : "RocketPastData",
     async () => {
@@ -36,10 +36,23 @@ const RocketPage = () => {
       staleTime: 30000,
     }
   );
+  const [currentShipIndex, setCurrentShipIndex] = useState(0);
+  const [siteList, setSiteList] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const { siteNameParam } = useParams();
+  const siteNameParamReplaced = siteNameParam
+    ?.replaceAll("_", " ")
+    .toUpperCase();
+
   const [currentSite, setCurrentSite] = useState(
-    data && data[0].launch_site.site_name
+    siteNameParamReplaced || (data && data[0].launch_site.site_name)
   );
   const [filteredData, setFilteredData] = useState([]);
+
+  //-----states
+
+  //-----effects
 
   useEffect(() => {
     const filterData =
@@ -52,7 +65,9 @@ const RocketPage = () => {
   }, [currentSite]);
 
   useEffect(() => {
-    setCurrentSite(data && data[0].launch_site.site_name);
+    setCurrentSite(
+      siteNameParamReplaced || (data && data[0].launch_site.site_name)
+    );
     const sitesList = data?.reduce((total, curr) => {
       if (total[curr.launch_site.site_name] >= 0) {
         total[curr.launch_site.site_name] =
@@ -64,11 +79,14 @@ const RocketPage = () => {
     }, {});
 
     setSiteList(sitesList);
-  }, [data]);
-  const starShipChanger = (query) => {
+  }, [data, siteNameParamReplaced]);
+
+  //-----effects
+
+  const currentLunchChangeHandler = (query) => {
     if (query === "next") {
       setCurrentShipIndex(
-        currentShipIndex < filteredData.length - 1
+        filteredData?.length - 1 !== currentShipIndex
           ? currentShipIndex + 1
           : currentShipIndex
       );
@@ -79,6 +97,17 @@ const RocketPage = () => {
     }
     setCurrentSite(filteredData[currentShipIndex]?.launch_site.site_name);
   };
+
+  const isUpComingChangeHandler = (boolean) => () => {
+    if (boolean) {
+      if (!isUpComing) setCurrentShipIndex(0);
+      setIsUpComing(true);
+    } else {
+      if (isUpComing) setCurrentShipIndex(0);
+      setIsUpComing(false);
+    }
+  };
+
   if (isLoading) {
     return <Loading />;
   }
@@ -114,22 +143,8 @@ const RocketPage = () => {
           </StRocketSearchResults>
         </StRocketSearch>
         <StRocketPageBtns isUpComing={isUpComing ? 1 : 2}>
-          <button
-            onClick={() => {
-              if (!isUpComing) setCurrentSite(0);
-              setIsUpComing(true);
-            }}
-          >
-            UPCOMING
-          </button>
-          <button
-            onClick={() => {
-              if (isUpComing) setCurrentSite(0);
-              setIsUpComing(false);
-            }}
-          >
-            PAST
-          </button>
+          <button onClick={isUpComingChangeHandler(true)}>UPCOMING</button>
+          <button onClick={isUpComingChangeHandler()}>PAST</button>
         </StRocketPageBtns>
       </StRocketPageTitleBox>
       <RocketInfo data={filteredData && filteredData[currentShipIndex]} />
@@ -139,7 +154,7 @@ const RocketPage = () => {
         setCurrentSite={setCurrentSite}
       />
       <StRocketNextBeforeRocket
-        onClick={() => starShipChanger("next")}
+        onClick={() => currentLunchChangeHandler("next")}
         shouldShow={
           filteredData?.length > 0 &&
           filteredData?.length - 1 !== currentShipIndex
@@ -149,7 +164,7 @@ const RocketPage = () => {
       </StRocketNextBeforeRocket>
       <StRocketNextBeforeRocket
         left
-        onClick={() => starShipChanger()}
+        onClick={() => currentLunchChangeHandler()}
         shouldShow={filteredData?.length > 0 && currentShipIndex !== 0}
       >
         <AiOutlineLeft />

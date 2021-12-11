@@ -12,9 +12,8 @@ function App() {
       <Layout>
         <Suspense fallback={<Loading />}>
           <Routes>
-            <Route path="/" element={<RocketPage param="1" />}>
-              <Route path=":id" element={<RocketPage />} />
-            </Route>
+            <Route path="/*" element={<RocketPage />} />
+            <Route path="/:siteNameParam" element={<RocketPage />} />
           </Routes>
         </Suspense>
         <Ticket />
