@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "components/screenSizeHelper";
+import { device } from "components/screenSizes";
 
 const selectedSite = css`
   position: relative;
@@ -23,7 +23,7 @@ const selectedSite = css`
   }
 `;
 
-export const StRocketFooterContainer = styled.footer`
+export const StRocketFooterContainer = styled.ul`
   width: clamp(375px, 100%, 700px);
   min-height: 80px;
   bottom: 0;
@@ -40,7 +40,7 @@ export const StRocketFooterContainer = styled.footer`
   }
 `;
 
-export const StRocketFooterLink = styled.footer`
+export const StRocketFooterLink = styled.li`
   width: 120px;
   min-height: 70px;
   display: flex;

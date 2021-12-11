@@ -3,7 +3,7 @@ import { CgSmartphoneChip } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import { StRocketFooterContainer, StRocketFooterLink } from "./style";
 
-const RocketFooter = memo(({ RocketData, currentSite }) => {
+const Navigation = memo(({ RocketData, currentSite }) => {
   return (
     <StRocketFooterContainer>
       {RocketData &&
@@ -25,4 +25,4 @@ const RocketFooter = memo(({ RocketData, currentSite }) => {
   );
 });
 
-export default RocketFooter;
+export default Navigation;

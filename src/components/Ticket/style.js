@@ -1,4 +1,4 @@
-import { device } from "components/screenSizeHelper";
+import { device } from "components/screenSizes";
 import styled from "styled-components";
 
 export const StTicketContainer = styled.div`

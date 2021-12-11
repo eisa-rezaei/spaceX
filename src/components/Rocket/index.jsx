@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 
-import RocketFooter from "./components/Footer";
+import RocketNavigation from "./components/Navigation";
 import RocketInfo from "./components/RocketInfo";
 import Loading from "components/Loading";
 
@@ -151,7 +151,7 @@ const RocketPage = () => {
         </StRocketPageBtns>
       </StRocketPageTitleBox>
       <RocketInfo data={filteredData && filteredData[currentShipIndex]} />
-      <RocketFooter RocketData={siteList} currentSite={currentSite} />
+      <RocketNavigation RocketData={siteList} currentSite={currentSite} />
       <StRocketNextBeforeRocket
         onClick={() => currentLunchChangeHandler("next")}
         shouldShow={

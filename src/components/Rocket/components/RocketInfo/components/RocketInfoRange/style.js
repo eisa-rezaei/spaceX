@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "components/screenSizeHelper";
+import { device } from "components/screenSizes";
 
 export const StRocketInfoRangeContainer = styled.div`
   width: 100%;
