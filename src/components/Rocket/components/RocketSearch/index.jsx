@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiCalendar, BiSearch } from "react-icons/bi";
-import TimeSearch from "../TimeSearch";
+import TimeSearch from "./TimeSearch";
 import {
   StRocketSearch,
   StRocketSearchResults,
