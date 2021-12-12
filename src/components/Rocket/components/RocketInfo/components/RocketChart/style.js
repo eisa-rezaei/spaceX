@@ -2,7 +2,7 @@ import { device } from "components/screenSizes";
 import styled from "styled-components";
 
 export const StRocketInfoRocketChartsItem = styled.div`
-  width: clamp(130px, 130px, 180px);
+  width: 120px;
   height: 130px;
   padding-top: 10px;
   position: relative;

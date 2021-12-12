@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { device } from "components/screenSizes";
 
 export const StRocketInfoContainer = styled.section`
-  width: clamp(380px, 100%, 700px);
+  width: 100%;
   display: flex;
   position: relative;
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
+  @media ${device.tablet} {
+    width: 700px;
+  }
 `;
 
 export const StRocketInfoRocketImg = styled.div`
