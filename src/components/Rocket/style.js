@@ -31,7 +31,7 @@ export const StRocketPageContainer = styled.article`
 `;
 
 export const StRocketPageTitleBox = styled.div`
-  width: 620px;
+  width: 100%;
   margin: 30px 0;
   display: flex;
   align-items: center;
@@ -42,6 +42,8 @@ export const StRocketPageTitleBox = styled.div`
     margin-bottom: 20px;
   }
   @media ${device.tablet} {
+    width: 620px;
+
     & h1 {
       font-size: 2rem;
     }
