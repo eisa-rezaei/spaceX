@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import AnimatedNumbers from "react-animated-numbers";
 import {
   StRocketInfoRange,
@@ -33,6 +34,13 @@ const RocketInfoRange = ({ rangeValue, title, maxValue }) => {
       </StRocketInfoRangeAnimatedContainer>
     </StRocketInfoRangeContainer>
   );
+};
+
+RocketInfoRange.propTypes = {
+  rangeValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
+  title: PropTypes.string.isRequired,
+  maxValue: PropTypes.string.isRequired,
 };
 
 export default RocketInfoRange;

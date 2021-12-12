@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BiCalendar, BiSearch } from "react-icons/bi";
 import TimeSearch from "../TimeSearch";
@@ -74,6 +75,13 @@ const RocketSearch = ({
       </button>
     </StRocketSearch>
   );
+};
+
+RocketSearch.propTypes = {
+  setCurrentSite: PropTypes.func.isRequired,
+  siteList: PropTypes.object.isRequired,
+  setCurrentShipIndex: PropTypes.func.isRequired,
+  setFilteredData: PropTypes.func.isRequired,
 };
 
 export default RocketSearch;

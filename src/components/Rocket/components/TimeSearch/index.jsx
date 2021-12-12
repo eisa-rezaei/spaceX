@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import DatePicker, { utils } from "react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
@@ -47,6 +48,10 @@ const TimeSearch = ({ setTimeSearchValues }) => {
       />
     </StRocketTimeSearch>
   );
+};
+
+TimeSearch.propTypes = {
+  setTimeSearchValues: PropTypes.func.isRequired,
 };
 
 export default TimeSearch;

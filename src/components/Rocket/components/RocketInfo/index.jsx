@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
 import rocketImg from "assets/falcon.webp";
 import { BsFillCircleFill } from "react-icons/bs";
 import { BsFillCheckCircleFill } from "react-icons/bs";
@@ -173,4 +174,7 @@ const RocketInfo = memo(({ data }) => {
   );
 });
 
+RocketInfo.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 export default RocketInfo;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import ReactECharts from "echarts-for-react/lib/core";
 import * as echarts from "echarts";
 import { StRocketInfoRocketChartsItem } from "./style";
@@ -99,4 +100,13 @@ const RocketChart = ({
   );
 };
 
+RocketChart.propTypes = {
+  title: PropTypes.string.isRequired,
+  chartData: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
+  chartMaxValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    .isRequired,
+  chartColor: PropTypes.string.isRequired,
+  chartParameter: PropTypes.string.isRequired,
+};
 export default RocketChart;

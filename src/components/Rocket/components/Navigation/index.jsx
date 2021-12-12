@@ -1,4 +1,5 @@
 import React, { memo } from "react";
+import PropTypes from "prop-types";
 import { CgSmartphoneChip } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
 import { StRocketFooterContainer, StRocketFooterLink } from "./style";
@@ -21,5 +22,10 @@ const Navigation = memo(({ RocketData, currentSite }) => {
     </StRocketFooterContainer>
   );
 });
+
+Navigation.propTypes = {
+  RocketData: PropTypes.object.isRequired,
+  currentSite: PropTypes.string.isRequired,
+};
 
 export default Navigation;

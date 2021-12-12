@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { GlobalStyle, StLayoutContainer } from "./style";
 
 const Layout = ({ children }) => {
@@ -9,5 +10,7 @@ const Layout = ({ children }) => {
     </StLayoutContainer>
   );
 };
-
+Layout.propTypes = {
+  children: PropTypes.any.isRequired,
+};
 export default Layout;
