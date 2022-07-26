@@ -1,24 +1,23 @@
-import Ticket from "components/Ticket";
 import { Suspense, lazy } from "react";
 import { Route, Routes, HashRouter as Router } from "react-router-dom";
 import Layout from "./components/Layout";
 import Loading from "./components/Loading";
 
 const RocketPage = lazy(() => import("./components/Rocket"));
+const Ticket = lazy(() => import("./components/Ticket"));
 
 function App() {
   return (
     <Router>
-      <Layout>
-        <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading />}>
+        <Layout>
           <Routes>
-            <Route path="/" element={<RocketPage param="1" />}>
-              <Route path=":id" element={<RocketPage />} />
-            </Route>
+            <Route path="/" element={<RocketPage />} />
+            <Route path="/:siteNameParam" element={<RocketPage />} />
           </Routes>
-        </Suspense>
-        <Ticket />
-      </Layout>
+          <Ticket />
+        </Layout>
+      </Suspense>
     </Router>
   );
 }

@@ -1,38 +1,25 @@
-import { device } from "components/screenSizeHelper";
 import styled from "styled-components";
+import { device } from "components/screenSizes";
 
 export const StRocketInfoContainer = styled.section`
-  width: clamp(380px, 100%, 700px);
-  min-height: 60vh;
-  position: relative;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  position: relative;
   align-items: center;
+  flex-direction: column;
   justify-content: flex-start;
-  .range {
-    background-color: #d3d3d3;
-    ::-webkit-slider-thumb {
-      max-width: 0;
-      max-height: 0;
-      visibility: hidden;
-    }
-    ::-ms-fill-lower {
-      background-color: #d3d3d3;
-    }
+  @media ${device.tablet} {
+    width: 700px;
   }
 `;
 
 export const StRocketInfoRocketImg = styled.div`
-  width: 230px;
-  height: 40vh;
-  display: flex;
   position: relative;
-  align-items: center;
-  justify-content: center;
   & img {
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 380px;
     z-index: 2;
+    position: relative;
   }
   ::after {
     content: "";
@@ -40,31 +27,47 @@ export const StRocketInfoRocketImg = styled.div`
     height: 70px;
     background: radial-gradient(
       50% 50% at 50% 50%,
-      #111 20%,
+      #000022 22%,
       rgba(0, 0, 0, 0) 100%
     );
-    filter: blur(10px);
+    background-color: #ffffff20;
+    mix-blend-mode: overlay;
+    filter: blur(15px);
     position: absolute;
     border-radius: 40%;
-    bottom: -20px;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
   }
+
   @media ${device.tablet} {
     & img {
-      width: 100%;
-      height: 120%;
+      width: 250px;
+      height: 400px;
     }
-    ::after {
-      bottom: -40px;
-    }
+  }
+`;
+
+export const StRocketInfoInfoContainer = styled.div`
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  @media ${device.tablet} {
+    position: absolute;
+    bottom: 140px;
+    height: 300px;
+    justify-content: space-between;
   }
 `;
 
 export const StRocketInfoRocketChartsContainer = styled.div`
   width: 100%;
-  height: auto;
+  height: 140px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   @media ${device.tablet} {
     margin-bottom: 15px;
@@ -93,11 +96,11 @@ export const StRocketInfoRocketChartsItem = styled.div`
       position: absolute;
     }
     :last-child {
-      bottom: 20%;
+      bottom: 10%;
       left: 50%;
       transform: translateX(-50%);
       position: absolute;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
   :last-child {
@@ -114,27 +117,25 @@ export const StRocketInfoRocketChartsItem = styled.div`
 `;
 
 export const StRocketInfoRocketLunchInfo = styled.div`
-  width: clamp(28%, 30%, 35%);
-  height: 180px;
+  width: 160px;
+  min-height: 220px;
   color: #fff;
-  bottom: 50px;
   z-index: 2;
-  ${(props) => (props.left ? "left: 10px;" : "right: 10px;")}
   display: flex;
-  position: absolute;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
   justify-content: space-between;
   @media ${device.tablet} {
-    height: 270px;
+    width: 200px;
+    height: 300px;
   }
 `;
 export const StRocketInfoRocketLunchInfoDPart = styled.div`
   width: 100%;
   & span {
     width: 100%;
-    margin: 3px 0;
-    font-size: 0.5rem;
+    margin: 5px 0;
+    font-size: 0.55rem;
     display: flex;
     align-items: center;
     justify-content: ${(props) => (props.right ? "right" : "space-between")};
@@ -142,56 +143,42 @@ export const StRocketInfoRocketLunchInfoDPart = styled.div`
       color: #9499c3;
     }
     & svg {
-      margin-left: ${(props) => (props.right ? "10px" : "0")};
+      font-size: 1rem;
+      margin-left: 10px;
       color: #9499c3;
     }
     & p {
       text-transform: ${(props) => (props.right ? "uppercase" : "capitalize")};
+      :last-child {
+        width: 80px;
+        text-align: left;
+      }
     }
   }
   @media ${device.tablet} {
     & span {
-      margin: 10px 0;
+      margin-bottom: ${(props) => (props.right ? "15px" : "10px")};
       font-size: ${(props) => (props.right ? "0.8rem" : "0.6rem")};
     }
   }
 `;
 
 export const StRocketInfoRocketLunchInfoChPart = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  & span {
-    width: 100%;
-    font-size: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    & input {
-      width: 60%;
-      height: 5px;
-      background-color: #d3d3d3;
-    }
-  }
-  @media ${device.tablet} {
-    font-size: 0.65rem;
-    & span {
-      margin: 5px 0;
-    }
-  }
 `;
 
 export const StRocketInfoRocketID = styled.div`
   width: 100%;
+  min-height: 50px;
+  margin-top: 20px;
   text-align: center;
   z-index: 2;
   font-size: 0.6rem;
   & span {
     color: #ff3333;
-  }
-  @media ${device.tablet} {
-    margin-top: 30px;
   }
 `;

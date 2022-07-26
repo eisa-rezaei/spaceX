@@ -1,7 +1,8 @@
+import { device } from "components/screenSizes";
 import styled, { createGlobalStyle } from "styled-components";
 
 export const StLayoutContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   position: relative;
@@ -24,9 +25,13 @@ body{
     user-select: none;
     line-height: 1;
     background-color: #14152c;
-    font-family: "Changa", sans-serif;
+    font-family: 'Lato', sans-serif;
 
 }
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 li{
     list-style: none;
 }
@@ -47,5 +52,19 @@ button {
     font-family: inherit;
 }
 
-
+@media ${device.tablet} {
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #000000; 
+}
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 3px;
+  :hover {
+  background: #aaa; 
+}
+}
+}
 `;

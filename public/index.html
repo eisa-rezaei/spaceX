@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Changa:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&display=swap"
       rel="stylesheet"
     />
     <title>SpaceX</title>
@@ -22,6 +22,10 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+      }
+      body {
+        user-select: none;
+        line-height: 1;
       }
       @keyframes rotation {
         0% {
@@ -36,13 +40,18 @@
       .pre-content {
         min-width: 100vw;
         min-height: 100vh;
-        color: #222;
+        color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #fff;
-        font-family: "Changa", sans-serif;
+        background-color: #1a1c45;
+        background-color: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.3) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        font-family: "Lato", sans-serif;
       }
       .pre-content span {
         width: 100px;
@@ -50,8 +59,11 @@
         margin-bottom: 10px;
         border-radius: 50%;
         border: 2px solid #bbccbb;
-        border-top: 3px solid #4e4cd5;
+        border-top: 3px solid #1a1c45;
         animation: rotation infinite 1.5s ease;
+      }
+      .pre-content span p {
+        margin-top: 15px;
       }
     </style>
   </head>
